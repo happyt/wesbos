@@ -13,27 +13,18 @@
   <div class="photobooth">
     <div class="controls">
         <button onClick="takePhoto()">Take photo</button>
-        <div class="rgb">
+        <button onClick="resetPuzzle()">Reset puzzle</button>
+        <div class="splitter">
             <br />
-            <label for="rmin">Red min:</label>
-            <input type="range" min="0" max="255" name="rmin">
-            <label for="rmax">Red max:</label>
-            <input type="range" min="0" max="255" name="rmax">
+            <label for="splitter">Splits:</label>
+            <input type="range" min="3" max="8" class="split">
             <br />
-            <label for="gmin">Green min:</label>
-            <input type="range" min="0" max="255" name="gmin">
-            <label for="gmax">Green max:</label>
-            <input type="range" min="0" max="255" name="gmax">
-            <br />
-            <label for="bmin">Blue min:</label>
-            <input type="range" min="0" max="255" name="bmin">
-            <label for="bmax">Blue max:</label>
-            <input type="range" min="0" max="255" name="bmax">
         </div>
     </div>
 
-    <canvas class="photo" width="320"></canvas>
-    <video class="player" width="160"></video>
+    <canvas class="photo"></canvas>
+    <canvas class="photo2"></canvas>
+    <video class="player" width="320"></video>
     <div class="strip"></div>
     <audio class="snap" src="http://wesbos.com/demos/photobooth/snap.mp3" hidden></audio>
     
