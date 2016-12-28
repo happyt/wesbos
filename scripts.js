@@ -99,16 +99,34 @@ function clickPuzzle(e) {
     let blockHeight = Math.floor(height / size);
 
  //   console.log(e);
-    let blockX =  Math.floor(e.offsetX/blockWidth);
-    let blockY =  Math.floor(e.offsetY/blockHeight);
-    console.log({ emptyX, emptyY, blockX, blockY});
+    let n = 0;
+    let clickX =  Math.floor(e.offsetX/blockWidth);
+    let clickY =  Math.floor(e.offsetY/blockHeight);
+    console.log({ emptyX, emptyY, clickX, clickY});
  
-    if (emptyX != blockX || emptyY != blockY) {
+    if (emptyX != clickX || emptyY != clickY) {
         // not click on the empty block
-        if (emptyX === blockX) {
+        if (emptyX === clickX) {
             // same column
-             console.log("same col");
-        } else if (emptyY === blockY) {
+             console.log("same col", emptyY, clickY);
+            if (emptyY < clickY) {
+                for (let row=emptyY; row < clickY; row++) {
+                    n = row * size + clickX;
+                    posn[n] = posn[n+size];
+                    n += size;
+                }
+                posn[n] = size*size - 1;
+                console.log({n});
+            } else {
+                for (let row=emptyY; row > clickY; row--) {
+                    n = row * size + clickX;
+                    posn[n] = posn[n+size];
+                    n -= size;
+                }
+                posn[n] = size*size - 1;                
+            }
+
+        } else if (emptyY === clickY) {
             // same row 
             console.log("same row");
         }
